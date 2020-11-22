@@ -56,6 +56,12 @@
               </button>
             </fieldset>
           </form>
+          <button
+            class="btn btn-lg btn-outline-danger pull-xs-left"
+            @click="onLogout"
+          >
+            Log Out &nbsp;<i class="ion-log-out"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -64,6 +70,7 @@
 
 <script>
 import { updateUserInfo, getCurrentUser } from "@/api/user";
+const Cookie = process.client ? require("js-cookie") : undefined;
 
 export default {
   name: "Settings",
@@ -91,10 +98,28 @@ export default {
         console.log(err);
       }
     },
+    onLogout() {
+      this.$store.commit("setUser", null);
+      Cookie.remove("user");
+      this.$router.push("/");
+    },
   },
   async mounted() {
     const { data } = await getCurrentUser();
     this.updateTarget = data.user;
+  },
+
+  head() {
+    return {
+      title: "Settings",
+      meta: [
+        {
+          hid: "settings",
+          name: "settings",
+          content: "settings",
+        },
+      ],
+    };
   },
 };
 </script>

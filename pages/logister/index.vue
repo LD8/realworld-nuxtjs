@@ -105,6 +105,20 @@ export default {
       }
     },
   },
+  head() {
+    return {
+      title: this.isLoginPage
+        ? "Login"
+        : "Sign Up",
+      meta: [
+        {
+          hid: "logister",
+          name: "logister",
+          content: "Login or sign up page",
+        },
+      ],
+    };
+  },
 };
 </script>
 

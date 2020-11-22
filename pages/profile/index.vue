@@ -29,8 +29,8 @@
                       'ion-minus-round': profile.following,
                       'ion-plus-round': !profile.following,
                     }"
-                  ></i
-                  >&nbsp;
+                  ></i>
+                  &nbsp;
                   {{ profile.following ? "Unfollow" : "Follow" }}
                   {{ profile.username }}
                 </template>
@@ -153,6 +153,18 @@ export default {
   },
   watchQuery: ["tab"],
   components: { ArticlePreview },
+  head() {
+    return {
+      title: `${this.$route.params.username}'s Profile`,
+      meta: [
+        {
+          hid: "profile",
+          name: "profile",
+          content: "profile",
+        },
+      ],
+    };
+  },
 };
 </script>
 

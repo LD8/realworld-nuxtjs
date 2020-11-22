@@ -116,6 +116,20 @@ export default {
       }
     }
   },
+  head() {
+    return {
+      title: this.$route.params.slug
+        ? "Update Article"
+        : "Create a New Article",
+      meta: [
+        {
+          hid: "article-crud",
+          name: "article-crud",
+          content: "edit or update articles",
+        },
+      ],
+    };
+  },
 };
 </script>
 
