@@ -72,3 +72,44 @@ export const unfavorite = (slug) => {
     url: `/api/articles/${slug}/favorite`,
   })
 }
+
+// return multiple articles created by followed users, ordered by most recent first
+// Can also take limit and offset query parameters like List Articles
+export const getFollowedUsersArticles = () => {
+  return request({
+    method: 'GET',
+    url: '/api/articles/feed',
+  })
+}
+
+export const createArticle = (data) => {
+  return request({
+    method: 'POST',
+    url: '/api/articles',
+    data,
+    // Example request body
+    // {
+    //   "article": {
+    //     "title": "How to train your dragon",
+    //     "description": "Ever wonder how?",
+    //     "body": "You have to believe",
+    //     "tagList": ["reactjs", "angularjs", "dragons"] //optional
+    //   }
+    // }
+  })
+}
+
+export const updateArticle = (slug, data) => {
+  return request({
+    method: 'PUT',
+    url: `/api/articles/${slug}`,
+    data,
+  })
+}
+
+export const deleteArticle = (slug) => {
+  return request({
+    method: 'DELETE',
+    url: `/api/articles/${slug}`,
+  })
+}
