@@ -11,7 +11,7 @@
           </li>
           <template v-if="user">
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="/edit">
+              <nuxt-link class="nav-link" to="/edit" exact>
                 <i class="ion-compose"></i>&nbsp;New Post
               </nuxt-link>
             </li>

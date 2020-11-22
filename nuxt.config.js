@@ -10,6 +10,9 @@ export default {
       routes.splice(articleIndex, 1)
       const profileIndex = routes.findIndex((r) => r.name === 'profile')
       routes.splice(profileIndex, 1)
+      // const editIndex = routes.findIndex((r) => r.name === 'edit')
+      // routes.splice(editIndex, 1)
+
       routes.push(
         ...[
           {
@@ -32,6 +35,11 @@ export default {
             path: '/profile/@:username',
             name: 'profile',
             component: resolve(__dirname, 'pages/profile'),
+          },
+          {
+            path: '/edit/:slug',
+            name: 'edit-article',
+            component: resolve(__dirname, 'pages/edit'),
           },
         ],
       )
