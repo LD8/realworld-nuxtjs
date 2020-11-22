@@ -13,6 +13,7 @@
       <div class="row article-content">
         <div class="col-md-12" v-html="article.body"></div>
       </div>
+      <TagList :tags="article.tagList" />
 
       <hr />
 
@@ -36,6 +37,7 @@ import { getSingleArticle } from "@/api/article";
 import ArticleMeta from "./components/article-meta";
 import ArticleComments from "./components/article-comments";
 import MarkdownIt from "markdown-it";
+import TagList from "../components/tag-list";
 
 export default {
   name: "Article",
@@ -53,6 +55,7 @@ export default {
   components: {
     ArticleMeta,
     ArticleComments,
+    TagList,
   },
   // SEO 优化 head
   head() {

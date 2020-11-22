@@ -37,13 +37,6 @@ export const updateUserInfo = (data) => {
   })
 }
 
-// get profile
-export const getProfile = (username) => {
-  return request({
-    method: 'GET',
-    url: `/api/profiles/${username}`,
-  })
-}
 // follow user
 export const followUser = (username) => {
   return request({

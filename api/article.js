@@ -73,15 +73,6 @@ export const unfavorite = (slug) => {
   })
 }
 
-// return multiple articles created by followed users, ordered by most recent first
-// Can also take limit and offset query parameters like List Articles
-export const getFollowedUsersArticles = () => {
-  return request({
-    method: 'GET',
-    url: '/api/articles/feed',
-  })
-}
-
 export const createArticle = (data) => {
   return request({
     method: 'POST',

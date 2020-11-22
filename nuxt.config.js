@@ -5,10 +5,10 @@ export default {
     extendRoutes(routes, resolve) {
       // 由于 logister 目录为 login 和 register 公用，为了分开需要先删除默认 logister route 配置
       const logisterIndex = routes.findIndex((r) => r.name === 'logister')
-      const articleIndex = routes.findIndex((r) => r.name === 'article')
-      const profileIndex = routes.findIndex((r) => r.name === 'profile')
       routes.splice(logisterIndex, 1)
+      const articleIndex = routes.findIndex((r) => r.name === 'article')
       routes.splice(articleIndex, 1)
+      const profileIndex = routes.findIndex((r) => r.name === 'profile')
       routes.splice(profileIndex, 1)
       routes.push(
         ...[
@@ -29,13 +29,13 @@ export default {
             component: resolve(__dirname, 'pages/article'),
           },
           {
-            path: '/profile/@:slug',
+            path: '/profile/@:username',
             name: 'profile',
             component: resolve(__dirname, 'pages/profile'),
           },
         ],
       )
-      // console.log(routes)
+      console.log(routes)
     },
   },
   // 注册插件

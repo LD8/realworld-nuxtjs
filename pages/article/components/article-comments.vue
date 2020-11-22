@@ -31,7 +31,7 @@
       </div>
       <div class="card-footer">
         <nuxt-link
-          :to="{ name: 'profile', param: { username: item.author.username } }"
+          :to="{ name: 'profile', params: { username: item.author.username } }"
           class="comment-author"
         >
           <img class="comment-author-img" :src="item.author.image" />

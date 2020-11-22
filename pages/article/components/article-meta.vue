@@ -3,7 +3,7 @@
     <nuxt-link
       :to="{
         name: 'profile',
-        param: {
+        params: {
           username: article.author.username,
         },
       }"
@@ -15,7 +15,7 @@
         class="author"
         :to="{
           name: 'profile',
-          param: {
+          params: {
             username: article.author.username,
           },
         }"
@@ -24,27 +24,31 @@
       </nuxt-link>
       <span class="date">{{ article.createdAt | date("MMM DD, YYYY") }}</span>
     </div>
-    <button
-      class="btn btn-sm btn-outline-secondary"
-      :class="{ active: article.author.following }"
-    >
-      <i class="ion-plus-round"></i>
-      &nbsp; Follow {{ article.author.username }}
-      <span class="counter">(10)</span>
-    </button>
+
+    <!-- <follow-user-btn :article="article" /> -->
+    <follow-user-btn :article="article" />
+
     &nbsp;&nbsp;
     <button
-      class="btn btn-sm btn-outline-primary"
-      :class="{ active: article.favorited }"
+      class="btn btn-sm"
+      :class="{
+        'btn-outline-secondary': article.favorited,
+        'btn-outline-primary': !article.favorited,
+      }"
+      @click="onFav(article)"
+      :disabled="article.favoriteDisabled"
     >
       <i class="ion-heart"></i>
-      &nbsp; Favorite Post
+      &nbsp; {{ article.favorited ? "Unfavorite Post" : "Favorite Post" }}
       <span class="counter">({{ article.favoritesCount }})</span>
     </button>
   </div>
 </template>
 
 <script>
+import { favOrUnfavArticle } from "@/utils/methods";
+import FollowUserBtn from "./follow-user-btn";
+
 export default {
   name: "ArticleMeta",
   props: {
@@ -52,6 +56,14 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    async onFav(article) {
+      await favOrUnfavArticle(article);
+    },
+  },
+  components: {
+    FollowUserBtn,
   },
 };
 </script>
