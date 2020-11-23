@@ -43,7 +43,7 @@ export default {
           },
         ],
       )
-      console.log(routes)
+      // console.log(routes)
     },
   },
   // 注册插件

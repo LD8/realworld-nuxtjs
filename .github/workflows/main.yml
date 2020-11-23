@@ -76,7 +76,7 @@ jobs:
           # （只）安装生产依赖项
           # pm2 reload：启用服务，需确保远端已有 pm2
           script: |
-            cd /root/realworld-nuxtjs
+            cd /home/ubuntu/realworld-nuxtjs
             wget https://github.com/LD8/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz
             tar zxvf release.tgz
             npm install --production
